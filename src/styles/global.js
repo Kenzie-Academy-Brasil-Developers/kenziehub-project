@@ -14,5 +14,13 @@ export const GlobalStyle = createGlobalStyle`
 
         --color-success: #3FE864;
         --color-negative: #E83F5B;
+
+        --font-family: 'Inter', sans-serif;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--color-grey-4);
+        color: var(--color-grey-0);
     }
 `;
