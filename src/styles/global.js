@@ -18,9 +18,21 @@ export const GlobalStyle = createGlobalStyle`
         --font-family: 'Inter', sans-serif;
     }
 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
         font-family: var(--font-family);
         background-color: var(--color-grey-4);
         color: var(--color-grey-0);
+    }
+
+    li,
+    a {
+        list-style: none;
+        text-decoration: none;
     }
 `;
