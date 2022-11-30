@@ -12,6 +12,7 @@ export const DefaultInput = styled.input`
     height: 3rem;
     border-radius: 4px;
     outline: none;
+    width: 100%;
 
     &:focus {
         border: 1.2182px solid var(--color-grey-0);
