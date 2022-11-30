@@ -9,7 +9,7 @@ export const Select = ({ id, register }) => {
     <SelectContainer>
       <DefaultLabel htmlFor={id}>Selecionar Módulo</DefaultLabel>
       <DefaultSelect id={id} {...register}>
-        <option defaultValue={true} value="">Selecionar módulo</option>
+        <option defaultValue={true} value="">Selecione seu módulo</option>
         <option value="module">Primeiro módulo (Introdução ao Frontend)</option>
         <option value="module">Segundo módulo (Frontend Avançado)</option>
         <option value="module">Terceiro módulo (Introdução ao Backend)</option>
