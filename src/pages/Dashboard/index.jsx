@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Navbar } from '../../components/Navbar';
 
-export const Dashboard = ({ user }) => {
+export const Dashboard = ({ user, setUser }) => {
   return (
     <>
-      <Navbar />
+      <Navbar setUser={setUser} />
     </>
   );
 };

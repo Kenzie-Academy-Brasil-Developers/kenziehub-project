@@ -12,7 +12,7 @@ export const MainRoutes = () => {
     <Routes>
       <Route path='' element={<Login setUser={setUser} />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/dashboard' element={<Dashboard user={user} />} />
+      <Route path='/dashboard' element={<Dashboard user={user} setUser={setUser} />} />
       <Route path='*' element={<Navigate to='' />} />
     </Routes>
   );

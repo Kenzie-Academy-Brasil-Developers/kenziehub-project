@@ -5,7 +5,7 @@ import { Container } from '../../styles/Container';
 import { BrandTitle } from '../BrandTitle';
 import { NavbarContainer } from './styles';
 
-export const Navbar = () => {
+export const Navbar = ({ setUser }) => {
     return (
         <NavbarContainer>
             <Container>
