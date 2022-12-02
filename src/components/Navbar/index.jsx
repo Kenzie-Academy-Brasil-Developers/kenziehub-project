@@ -16,7 +16,11 @@ export const Navbar = ({ setUser }) => {
         <NavbarContainer>
             <Container>
                 <BrandTitle fontSize='24px' />
-                <DefaultLink to='/' onClick={handleLogout}>Sair</DefaultLink>
+                <ul>
+                    <li>
+                        <DefaultLink to='/' onClick={handleLogout}>Sair</DefaultLink>
+                    </li>
+                </ul>
             </Container>
         </NavbarContainer>
     );
