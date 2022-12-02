@@ -5,6 +5,7 @@ export const HeaderContainer = styled.header`
 
     border-top: 1.7px solid var(--color-grey-3);
     border-bottom: 1.7px solid var(--color-grey-3);
+    margin-bottom: 29px;
 
     & > div {
         display: flex;
