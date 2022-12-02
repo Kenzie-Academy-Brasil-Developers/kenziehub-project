@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { instance } from '../../../services/api';
 
 import { Button } from '../../../styles/Buttons';
@@ -8,6 +9,7 @@ import { Input } from '../../Input';
 import { loginSchema } from './loginSchema';
 
 export const FormLogin = () => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
@@ -18,8 +20,8 @@ export const FormLogin = () => {
         try {
             setLoading(true);
             const response = await instance.post('/sessions', data);
-            console.log(response.data);
             reset();
+            navigate('/dashboard');
         } catch (err) {
             console.error(err);
         } finally {
