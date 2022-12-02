@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { instance } from '../../../services/api';
 
 import { Button } from '../../../styles/Buttons';
@@ -22,10 +23,12 @@ export const FormRegister = () => {
             setLoading(true);
             delete data.confirmPwd;
             const response = await instance.post('/users', data);
+            toast.success('Conta criada com sucesso!');
             reset();
             navigate('/');
         } catch (err) {
             console.error(err);
+            toast.error('Ops! Algo deu errado');
         } finally {
             setLoading(false);
         }

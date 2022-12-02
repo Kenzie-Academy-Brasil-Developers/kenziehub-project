@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { instance } from '../../../services/api';
 
 import { Button } from '../../../styles/Buttons';
@@ -21,6 +22,8 @@ export const FormLogin = ({ setUser }) => {
             setLoading(true);
             const response = await instance.post('/sessions', data);
 
+            toast.success('Login efetuado com sucesso!');
+
             localStorage.setItem('userToken', response.data.token);
             localStorage.setItem('userId', response.data.user.id);
 
@@ -29,6 +32,7 @@ export const FormLogin = ({ setUser }) => {
             navigate('/dashboard');
         } catch (err) {
             console.error(err);
+            toast.error('Ops! Algo deu errado');
         } finally {
             setLoading(false);
         }
