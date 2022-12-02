@@ -1,6 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { instance } from '../../../services/api';
 
 import { Button } from '../../../styles/Buttons';
 import { Input } from '../../Input';
@@ -8,19 +10,25 @@ import { Select } from '../../Select/SelectModule';
 import { registerSchema } from './registerSchema';
 
 export const FormRegister = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
         resolver: yupResolver(registerSchema)
     });
 
-    const handleForm = (data) => {
-        delete data.confirmPwd;
-        console.log(data);
-        reset();
+    const fetchApi = async (data) => {
+        try {
+            delete data.confirmPwd;
+            const response = await instance.post('/users', data);
+            reset();
+            navigate('/');
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
-        <form noValidate onSubmit={handleSubmit(handleForm)}>
+        <form noValidate onSubmit={handleSubmit(fetchApi)}>
             <Input type='text' placeholder='Digite aqui seu nome' label='Nome' register={register('name')} errors={errors.name} />
             <Input type='email' placeholder='Digite aqui seu email' label='Email' register={register('email')} errors={errors.email} />
             <Input type='password' placeholder='Digite aqui sua senha' label='Senha' register={register('password')} errors={errors.password} />
