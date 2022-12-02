@@ -4,6 +4,7 @@ export const NavbarContainer = styled.div`
     & > div {
         display: flex;
         justify-content: space-between;
-        padding: 20px 0;
+        align-items: center;
+        height: 72px;
     }
 `;
