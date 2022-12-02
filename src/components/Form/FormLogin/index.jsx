@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '../../../styles/Buttons';
 import { Input } from '../../Input';
+import { loginSchema } from './loginSchema';
 
 export const FormLogin = () => {
-    const [handleEmail, setHandleEmail] = useState('');
-    const [handlePwd, setHandlePwd] = useState('');
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: 'onChange',
+        resolver: yupResolver(loginSchema)
+    });
 
-    const checkCondition = handleEmail.length && handlePwd.length ? true : false;
+    const handleForm = (data) => {
+        console.log(data);
+    };
 
     return (
-        <form>
-            <Input type='email' placeholder='Digite aqui seu email' label='Email' register='' onChange={setHandleEmail} />
-            <Input type='password' placeholder='Digite aqui sua senha' label='Senha' register='' onChange={setHandlePwd} />
-            <Button type='submit' disabled={!checkCondition} variant={checkCondition ? 'primary' : 'negative'}>Entrar</Button>
+        <form noValidate onSubmit={handleSubmit(handleForm)}>
+            <Input type='email' placeholder='Digite aqui seu email' label='Email' register={register('email')} errors={errors.email} />
+            <Input type='password' placeholder='Digite aqui sua senha' label='Senha' register={register('password')} errors={errors.password} />
+            <Button type='submit' variant='primary'>Entrar</Button>
         </form>
     );
 };
