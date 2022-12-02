@@ -27,7 +27,7 @@ export const HeaderContainer = styled.header`
         }
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: 650px) {
         & > div {
             display: flex;
             flex-direction: column;
