@@ -1,7 +1,15 @@
 import React from 'react';
 
-export const Dashboard = ({ user }) => {
+import { Header } from '../../components/Header';
+import { Main } from '../../components/Main';
+import { Navbar } from '../../components/Navbar';
+
+export const Dashboard = ({ user, setUser }) => {
   return (
-    <div>Dashboard</div>
+    <>
+      <Navbar setUser={setUser} />
+      <Header user={user} />
+      <Main />
+    </>
   );
 };
