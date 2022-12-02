@@ -25,5 +25,13 @@ export const HeaderContainer = styled.header`
             font-size: .7875rem;
             line-height: 1.375rem;
         }
-    }  
+    }
+
+    @media (max-width: 450px) {
+        & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
 `;
