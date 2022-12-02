@@ -20,6 +20,10 @@ export const FormLogin = ({ setUser }) => {
         try {
             setLoading(true);
             const response = await instance.post('/sessions', data);
+
+            localStorage.setItem('userToken', response.data.token);
+            localStorage.setItem('userId', response.data.user.id);
+
             setUser(response.data.user);
             reset();
             navigate('/dashboard');
