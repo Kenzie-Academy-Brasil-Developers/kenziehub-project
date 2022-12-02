@@ -6,11 +6,17 @@ import { BrandTitle } from '../BrandTitle';
 import { NavbarContainer } from './styles';
 
 export const Navbar = ({ setUser }) => {
+
+    const handleLogout = () => {
+        setUser({});
+        localStorage.clear();
+    };
+
     return (
         <NavbarContainer>
             <Container>
                 <BrandTitle fontSize='24px' />
-                <DefaultLink to='/'>Sair</DefaultLink>
+                <DefaultLink to='/' onClick={handleLogout}>Sair</DefaultLink>
             </Container>
         </NavbarContainer>
     );
