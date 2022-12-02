@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { instance } from '../../../services/api';
@@ -11,6 +11,7 @@ import { registerSchema } from './registerSchema';
 
 export const FormRegister = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
         resolver: yupResolver(registerSchema)
@@ -18,12 +19,15 @@ export const FormRegister = () => {
 
     const fetchApi = async (data) => {
         try {
+            setLoading(true);
             delete data.confirmPwd;
             const response = await instance.post('/users', data);
             reset();
             navigate('/');
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -42,7 +46,7 @@ export const FormRegister = () => {
                 <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo</option>
                 <option value="Quarto módulo (Backend Avançado)">Quarto módulo</option>
             </Select>
-            <Button type='submit' variant='primary'>Cadastrar</Button>
+            <Button type='submit' disabled={loading} variant={loading ? 'negative' : 'primary'}>Cadastrar</Button>
         </form>
     );
 };
