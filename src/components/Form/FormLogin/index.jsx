@@ -8,7 +8,7 @@ import { Button } from '../../../styles/Buttons';
 import { Input } from '../../Input';
 import { loginSchema } from './loginSchema';
 
-export const FormLogin = () => {
+export const FormLogin = ({ setUser }) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -20,6 +20,7 @@ export const FormLogin = () => {
         try {
             setLoading(true);
             const response = await instance.post('/sessions', data);
+            setUser(response.data.user);
             reset();
             navigate('/dashboard');
         } catch (err) {
