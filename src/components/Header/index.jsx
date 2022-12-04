@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { UserContext } from '../../contexts/userContext';
 import { Container } from '../../styles/Container';
 import { HeaderContainer } from './styles';
 
-export const Header = ({ user }) => {
+export const Header = () => {
+    const { user } = useContext(UserContext);
+
     return (
         <HeaderContainer>
             <Container>

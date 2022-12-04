@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { UserContext } from '../../contexts/userContext';
 import { DefaultLink } from '../../styles/Buttons';
 import { Container } from '../../styles/Container';
 import { BrandTitle } from '../BrandTitle';
 import { NavbarContainer } from './styles';
 
-export const Navbar = ({ setUser }) => {
-
-    const handleLogout = () => {
-        setUser({});
-        localStorage.clear();
-    };
+export const Navbar = () => {
+    const { handleLogout } = useContext(UserContext);
 
     return (
         <NavbarContainer>
