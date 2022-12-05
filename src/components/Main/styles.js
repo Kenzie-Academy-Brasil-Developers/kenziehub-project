@@ -22,4 +22,10 @@ export const TechWrapper = styled.ul`
     flex-direction: column;
     gap: 14px;
     margin-top: 21px;
+    transition: all .3s;
+
+    @media (max-width: 240px) {
+        padding: 5px;
+        gap: 7px;
+    }
 `;
