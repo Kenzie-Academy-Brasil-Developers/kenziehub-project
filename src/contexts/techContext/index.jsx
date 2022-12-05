@@ -28,6 +28,22 @@ export const TechProvider = ({ children }) => {
         }
     };
 
+    const deleteTechApi = async (techId) => {
+        try {
+            await instance.delete(`/users/techs/${techId}`, {
+                headers: { Authorization: `Bearer ${localStorage.userToken}` },
+            });
+            
+            toast.success('Tecnologia deletada.');
+            const updatedData = techs.filter(tech => tech.id !== techId);
+            setTechs(updatedData);
+            
+        } catch (err) {
+            toast.error('Erro ao deletar a tecnologia! Tente novamente.');
+            return err;
+        }
+    };
+
     return (
         <TechContext.Provider value={{
             techs,
@@ -35,6 +51,7 @@ export const TechProvider = ({ children }) => {
             regisModal,
             setRegisModal,
             createTechApi,
+            deleteTechApi,
             loading,
         }}>
             {children}
