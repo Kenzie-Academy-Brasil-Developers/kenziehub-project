@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.main`
-    
-`;
-
 export const TechHeader = styled.section`
     display: flex;
     justify-content: space-between;
