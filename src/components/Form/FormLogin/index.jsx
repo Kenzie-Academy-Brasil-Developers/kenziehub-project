@@ -8,14 +8,14 @@ import { Input } from '../../Input';
 import { loginSchema } from './loginSchema';
 
 export const FormLogin = () => {
-    const { loading, requestLoginApi } = useContext(UserContext);
+    const { loading, requestLoginApi, user } = useContext(UserContext);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: 'onChange',
         resolver: yupResolver(loginSchema)
     });
 
-    useEffect(() => reset(), [requestLoginApi]);
+    useEffect(() => reset(), [user]);
 
     return (
         <form noValidate onSubmit={handleSubmit(requestLoginApi)}>
