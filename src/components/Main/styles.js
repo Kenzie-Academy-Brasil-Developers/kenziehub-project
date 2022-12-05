@@ -21,4 +21,5 @@ export const TechWrapper = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 14px;
+    margin-top: 21px;
 `;
