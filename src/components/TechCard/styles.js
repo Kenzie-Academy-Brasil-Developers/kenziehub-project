@@ -7,6 +7,7 @@ export const Card = styled.li`
     background-color: var(--color-grey-4);
     border-radius: 4px;
     padding: 14px;
+    cursor: pointer;
     transition: all .3s;
 
     &:hover {
