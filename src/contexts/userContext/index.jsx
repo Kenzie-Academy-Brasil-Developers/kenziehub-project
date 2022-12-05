@@ -86,6 +86,7 @@ export const UserProvider = ({ children }) => {
             handleLogout,
             requestLoginApi,
             requestRegisterApi,
+            techs,
         }}>
             {children}
         </UserContext.Provider>
