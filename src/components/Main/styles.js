@@ -7,6 +7,7 @@ export const MainContainer = styled.main`
 export const TechHeader = styled.section`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     & > h3 {
         font-weight: 600;
