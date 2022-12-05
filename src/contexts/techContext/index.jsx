@@ -30,10 +30,11 @@ export const TechProvider = ({ children }) => {
 
     const deleteTechApi = async (techId) => {
         try {
+            setLoading(true);
             await instance.delete(`/users/techs/${techId}`, {
                 headers: { Authorization: `Bearer ${localStorage.userToken}` },
             });
-            
+
             toast.success('Tecnologia deletada.');
             const updatedData = techs.filter(tech => tech.id !== techId);
             setTechs(updatedData);
@@ -41,6 +42,8 @@ export const TechProvider = ({ children }) => {
         } catch (err) {
             toast.error('Erro ao deletar a tecnologia! Tente novamente.');
             return err;
+        } finally {
+            setLoading(false);
         }
     };
 
