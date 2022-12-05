@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 
-import { UserContext } from '../../contexts/userContext';
+import { TechContext } from '../../contexts/techContext';
 import { Container } from '../../styles/Container';
 import { AddButton } from '../AddButton';
 import { TechCard } from '../TechCard';
-
 import { TechHeader, TechWrapper } from './styles';
 
 export const Main = () => {
-    const { techs } = useContext(UserContext);
+    const { techs } = useContext(TechContext);
 
     return (
         <Container>
