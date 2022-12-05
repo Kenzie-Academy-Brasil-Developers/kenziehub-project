@@ -7,6 +7,7 @@ export const TechContext = createContext({});
 export const TechProvider = ({ children }) => {
     const [techs, setTechs] = useState([]);
     const [regisModal, setRegisModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const createTechApi = async (data) => {
@@ -55,6 +56,8 @@ export const TechProvider = ({ children }) => {
             setRegisModal,
             createTechApi,
             deleteTechApi,
+            setEditModal,
+            editModal,
             loading,
         }}>
             {children}
