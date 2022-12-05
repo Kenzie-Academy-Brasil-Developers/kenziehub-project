@@ -104,3 +104,24 @@ export const TrashButton = styled.button`
         background-position: center;
     }
 `;
+
+export const CloseButton = styled.button`
+    background: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+    padding: 14px;
+    border-radius: 4px;
+    background-image: url(/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+        background: var(--color-grey-3);
+        background-image: url(/close.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+`;
