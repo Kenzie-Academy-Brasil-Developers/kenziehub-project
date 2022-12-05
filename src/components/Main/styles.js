@@ -12,3 +12,13 @@ export const TechHeader = styled.section`
         color: var(--color-grey-0);
     }
 `;
+
+export const TechWrapper = styled.ul`
+    background-color: var(--color-grey-3);
+    border-radius: 4px;
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+`;
