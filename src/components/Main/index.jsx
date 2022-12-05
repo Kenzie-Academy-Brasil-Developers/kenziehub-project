@@ -7,13 +7,13 @@ import { TechCard } from '../TechCard';
 import { TechHeader, TechWrapper } from './styles';
 
 export const Main = () => {
-    const { techs } = useContext(TechContext);
+    const { techs, setRegisModal } = useContext(TechContext);
 
     return (
         <Container>
             <TechHeader>
                 <h3>Tecnologias</h3>
-                <AddButton />
+                <AddButton onClick={() => setRegisModal(true)} />
             </TechHeader>
             <TechWrapper>
                 {techs.map(({ title, status, id }) =>
