@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -9,6 +9,7 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(false);
+    const [techs, setTechs] = useState([]);
 
     const navigate = useNavigate();
 
@@ -17,17 +18,17 @@ export const UserProvider = ({ children }) => {
         localStorage.clear();
     };
 
-    const requestLoginApi = async (data) => {
+    const requestLoginApi = async (formData) => {
         try {
             setLoading(true);
-            const response = await instance.post('/sessions', data);
+            const { data } = await instance.post('/sessions', formData);
 
             toast.success('Login efetuado com sucesso!');
 
-            localStorage.setItem('userToken', response.data.token);
-            localStorage.setItem('userId', response.data.user.id);
+            localStorage.setItem('userToken', data.token);
+            localStorage.setItem('userId', data.user.id);
 
-            setUser(response.data.user);
+            setUser(data.user);
             navigate('/dashboard');
 
         } catch (err) {
@@ -54,6 +55,27 @@ export const UserProvider = ({ children }) => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        const requestUserData = async () => {
+            try {
+                if (localStorage.userToken) {
+                    navigate('/dashboard');
+                    const { data } = await instance.get('/profile', {
+                        headers: { Authorization: `Bearer ${localStorage.userToken}` },
+                    });
+
+                    setUser(data);
+                    setTechs(data.techs);
+                } 
+
+            } catch (err) {
+                localStorage.clear();
+                return err;
+            }
+        };
+        requestUserData();
+    }, [navigate]);
 
     return (
         <UserContext.Provider value={{
