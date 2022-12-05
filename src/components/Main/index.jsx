@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { Container } from '../../styles/Container';
-import { MainContainer } from './styles';
+import { AddButton } from '../AddButton';
+import { MainContainer, TechHeader } from './styles';
 
 export const Main = () => {
     return (
         <MainContainer>
             <Container>
-                <p>Que pena! Estamos em desenvolvimento :(</p>
-                <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+                <TechHeader>
+                    <h3>Tecnologias</h3>
+                    <AddButton />
+                </TechHeader>
             </Container>
         </MainContainer>
     );
