@@ -83,3 +83,24 @@ export const SecondaryLink = styled(Link)`
         background-color: var(--color-grey-2);
     }
 `;
+
+export const TrashButton = styled.button`
+    background: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+    padding: 14px;
+    border-radius: 4px;
+    background-image: url(/trash.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all .3s;
+    
+    &:hover {
+        background: var(--color-grey-2);
+        background-image: url(/trash.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+`;
