@@ -7,8 +7,8 @@ export const registerSchema = yup.object().shape({
         .string()
         .required('Campo obrigatório!')
         .matches(/(?=.*?[A-Za-z])/, 'É necessário pelo menos uma letra.')
-        .matches(/(?=.*?[0-9])/, "É necessário pelo menos um número.")
-        .matches(/(?=.*?[#?!@$%^&*-])/, "É necessário pelo menos um caractere.")
+        .matches(/(?=.*?[0-9])/, 'É necessário pelo menos um número.')
+        .matches(/(?=.*?[#?!@$%^&*-])/, 'É necessário pelo menos um caractere.')
         .min(8, 'É necessário pelo menos 8 caracteres.'),
     confirmPwd: yup
         .string()
