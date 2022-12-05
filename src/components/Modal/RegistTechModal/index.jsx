@@ -15,7 +15,7 @@ export const RegisTechModal = () => {
         resolver: yupResolver(regisModalSchema)
     });
 
-    const { setRegisModal } = useContext(TechContext);
+    const { setRegisModal, createTechApi } = useContext(TechContext);
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export const RegisTechModal = () => {
                     <h4>Cadastrar Tecnologia</h4>
                     <CloseButton onClick={() => setRegisModal(false)} />
                 </ModalHeader>
-                <form noValidate onSubmit={handleSubmit()}>
+                <form noValidate onSubmit={handleSubmit(createTechApi)}>
                     <Input type='text' placeholder='Digite o nome da tecnologia' label='Nome' register={register('title')} errors={errors.title} />
                     <Select id='select-techs' label='Selecionar status' register={register('status')} errors={errors.status}>
                         <option value="Iniciante">Iniciante</option>
