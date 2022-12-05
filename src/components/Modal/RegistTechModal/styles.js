@@ -18,7 +18,7 @@ export const ModalWrapper = styled.div`
     width: 100%;
     max-width: 369px;
     height: 100%;
-    max-height: 342px;
+    max-height: 350px;
     overflow-y: auto;
     padding: 68px 22px 0;
     background-color: var(--color-grey-3);
