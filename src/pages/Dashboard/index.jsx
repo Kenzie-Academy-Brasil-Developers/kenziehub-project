@@ -8,7 +8,9 @@ import { Navbar } from '../../components/Navbar';
 export const Dashboard = () => {
   const navigate = useNavigate();
   
-  useEffect(() => !localStorage.userToken && navigate('/'), []);
+  useEffect(() =>  {
+    if (!localStorage.userToken) navigate('/');
+  }, []);
 
   return (
     <>
