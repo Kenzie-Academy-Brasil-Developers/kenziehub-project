@@ -15,7 +15,7 @@ export const RegisTechModal = () => {
         resolver: yupResolver(regisModalSchema)
     });
 
-    const { setRegisModal, createTechApi } = useContext(TechContext);
+    const { setRegisModal, createTechApi, loading } = useContext(TechContext);
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -45,7 +45,7 @@ export const RegisTechModal = () => {
                         <option value="Intermediário">Intermediário</option>
                         <option value="Avançado">Avançado</option>
                     </Select>
-                    <Button type='submit' variant='primary'>Cadastrar Tecnologia</Button>
+                    <Button type='submit' disabled={loading} variant={loading ? 'negative' : 'primary'}>Cadastrar Tecnologia</Button>
                 </form>
             </ModalWrapper>
         </Modal>
