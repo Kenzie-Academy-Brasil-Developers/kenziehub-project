@@ -119,7 +119,7 @@ export const CloseButton = styled.button`
     transition: all .3s;
 
     &:hover {
-        background: var(--color-grey-3);
+        background: var(--color-grey-2);
         background-image: url(/close.svg);
         background-repeat: no-repeat;
         background-position: center;
