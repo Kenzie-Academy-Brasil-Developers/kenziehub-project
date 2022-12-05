@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+
+import { TechContext } from '../../../contexts/techContext';
 import { Button, CloseButton } from '../../../styles/Buttons';
 import { Input } from '../../Input';
 import { Select } from '../../Select/SelectModule';
-
 import { Modal, ModalHeader, ModalWrapper } from './styles';
 
 export const RegisTechModal = () => {
+    const { setRegisModal } = useContext(TechContext);
+    const modalRef = useRef(null);
+
+    useEffect(() => {
+        const modalOutClick = (e) => {
+            const target = e.target.className;
+            const element = modalRef.current.className;
+
+            if (element.includes(target)) {
+                setRegisModal(false);
+            }
+        };
+        window.addEventListener('mousedown', modalOutClick);
+        return () => window.removeEventListener('mousedown', modalOutClick);
+    }, []);
+
     return (
-        <Modal>
+        <Modal ref={modalRef}>
             <ModalWrapper>
                 <ModalHeader>
                     <h4>Cadastrar Tecnologia</h4>
-                    <CloseButton />
+                    <CloseButton onClick={() => setRegisModal(false)} />
                 </ModalHeader>
                 <form>
                     <Input type='text' placeholder='Digite o nome da tecnologia' label='Nome' />
