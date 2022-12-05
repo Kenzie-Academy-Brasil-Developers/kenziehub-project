@@ -98,7 +98,7 @@ export const TrashButton = styled.button`
     transition: all .3s;
     
     &:hover {
-        background: var(--color-grey-2);
+        background: var(--color-grey-4);
         background-image: url(/trash.svg);
         background-repeat: no-repeat;
         background-position: center;
