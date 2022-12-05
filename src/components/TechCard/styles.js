@@ -27,9 +27,24 @@ export const Card = styled.li`
 
         & > span {
             font-weight: 400;
-            font-size: 12.182px;
-            line-height: 22px;
+            font-size: .7614rem;
+            line-height: 1.375rem;
             color: var(--color-grey-1);
+        }
+    }
+
+    @media (max-width: 321px) {
+        padding: 4px;
+
+        & > p {
+            font-size: .7006rem;
+        }
+
+        & > div {
+            gap: 8px;
+            & > span {
+                font-size: 9.182px;
+            }
         }
     }
 `;
