@@ -23,7 +23,7 @@ export const RegisTechModal = () => {
             const target = e.target.className;
             const element = modalRef.current.className;
 
-            if (element.includes(target)) {
+            if (target.includes(element)) {
                 setRegisModal(false);
             }
         };
