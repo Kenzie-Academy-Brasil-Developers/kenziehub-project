@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle`
 
         --color-white: #fff;
 
+        --color-overlay-grey-0: rgba(18, 18, 20, 0.5);
+
         --color-success: #3FE864;
         --color-negative: #E83F5B;
 
