@@ -25,7 +25,7 @@ export const FormRegister = () => {
             <Input type='password' placeholder='Digite novamente sua senha' label='Confirmar Senha' register={register('confirmPwd')} errors={errors.confirmPwd} />
             <Input type='text' placeholder='Fale sobre você' label='Bio' register={register('bio')} errors={errors.bio} />
             <Input type='text' placeholder='Opção de contato' label='Contato' register={register('contact')} errors={errors.contact} />
-            <Select id='select-module' register={register('course_module')} errors={errors.course_module} >
+            <Select id='select-module' label='Selecionar Módulo' register={register('course_module')} errors={errors.course_module} >
                 <option defaultValue={true} value="">Selecione seu módulo</option>
                 <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo</option>
                 <option value="Segundo módulo (Frontend Avançado)">Segundo módulo</option>

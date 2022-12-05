@@ -5,10 +5,10 @@ import { FormError } from '../../../styles/Messages';
 import { DefaultSelect } from '../../../styles/Selects';
 import { SelectContainer } from './styles';
 
-export const Select = ({ id, register, errors , children }) => {
+export const Select = ({ id, label, register, errors , children }) => {
   return (
     <SelectContainer>
-      <DefaultLabel htmlFor={id}>Selecionar Módulo</DefaultLabel>
+      <DefaultLabel htmlFor={id}>{label}</DefaultLabel>
       <DefaultSelect id={id} {...register}>
         {children}
       </DefaultSelect>
