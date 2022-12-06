@@ -7,9 +7,16 @@ import { TechCard } from '../TechCard';
 import { TechHeader, TechWrapper } from './styles';
 
 export const Main = () => {
-    const { techs, setRegisModal, deleteTechApi, loading } = useContext(TechContext);
+    const { techs, setRegisModal, setModalInfo, setEditModal } = useContext(TechContext);
 
-    const handleDeleteButton = (event) => deleteTechApi(event.target.id);
+    const handleModal = (event) => {
+        setModalInfo({
+            id: event.target.id,
+            title: event.target.children[0].textContent,
+            status: event.target.children[1].textContent,
+        });
+        setEditModal(true);
+    };
 
     return (
         <Container>
@@ -19,7 +26,7 @@ export const Main = () => {
             </TechHeader>
             <TechWrapper>
                 {techs.map(({ title, status, id }) =>
-                    <TechCard key={id} name={title} status={status} techId={id} onClick={handleDeleteButton} loading={loading} />)}
+                    <TechCard key={id} name={title} status={status} techId={id} onClick={handleModal} />)}
             </TechWrapper>
         </Container>
     );
