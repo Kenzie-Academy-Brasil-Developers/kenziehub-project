@@ -52,8 +52,7 @@ export const TechProvider = ({ children }) => {
             });
 
             toast.success('Tecnologia deletada.');
-            const updatedData = techs.filter(tech => tech.id !== techId);
-            setTechs(updatedData);
+            refreshTechs();
             setEditModal(false);
 
         } catch (err) {
@@ -64,7 +63,22 @@ export const TechProvider = ({ children }) => {
         }
     };
 
- 
+    const updateTechApi = async (data, techId) => {
+        try {
+            await instance.put(`/users/techs/${techId}`, data, {
+                headers: { Authorization: `Bearer ${localStorage.userToken}` },
+            });
+
+            toast.success('Tecnologia atualizada.');
+            refreshTechs();
+            setEditModal(false);
+
+        } catch (err) {
+            toast.error('Ops! Algo deu errado');
+            return err;
+        }
+    };
+
     return (
         <TechContext.Provider value={{
             techs,
