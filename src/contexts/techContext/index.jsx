@@ -40,6 +40,7 @@ export const TechProvider = ({ children }) => {
             toast.success('Tecnologia deletada.');
             const updatedData = techs.filter(tech => tech.id !== techId);
             setTechs(updatedData);
+            setEditModal(false);
             
         } catch (err) {
             toast.error('Erro ao deletar a tecnologia! Tente novamente.');
