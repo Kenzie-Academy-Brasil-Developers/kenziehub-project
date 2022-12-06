@@ -1,15 +1,17 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { instance } from '../../services/api';
+import { TechContext } from '../techContext';
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+    const { setTechs } = useContext(TechContext);
+
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(false);
-    const [techs, setTechs] = useState([]);
 
     const navigate = useNavigate();
 
@@ -67,7 +69,7 @@ export const UserProvider = ({ children }) => {
 
                     setUser(data);
                     setTechs(data.techs);
-                } 
+                }
 
             } catch (err) {
                 localStorage.clear();
