@@ -7,7 +7,7 @@ import { Select } from '../../Select/SelectModule';
 import { Modal, ModalFooter, ModalHeader, ModalWrapper } from './styles';
 
 export const EditTechModal = () => {
-    const { setEditModal, loading, modalInfo } = useContext(TechContext);
+    const { setEditModal, loading, modalInfo, deleteTechApi } = useContext(TechContext);
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -44,7 +44,14 @@ export const EditTechModal = () => {
                             variant={loading ? 'negative' : 'primary'}
                             id={modalInfo.id}
                         >Salvar alterações</Button>
-                        <Button type='button' variant='disabled' id={modalInfo.id}>Excluir</Button>
+
+                        <Button
+                            type='button'
+                            disabled={loading}
+                            variant='disabled'
+                            id={modalInfo.id}
+                            onClick={(event) => deleteTechApi(event.target.id)}
+                        >Excluir</Button>
                     </ModalFooter>
                 </form>
             </ModalWrapper>
