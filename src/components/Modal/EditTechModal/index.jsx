@@ -12,7 +12,7 @@ export const EditTechModal = () => {
         mode: 'onChange',
     });
 
-    const { setEditModal, loading, modalInfo, deleteTechApi } = useContext(TechContext);
+    const { setEditModal, loading, modalInfo, deleteTechApi, updateTechApi } = useContext(TechContext);
     const [disableSubmit, setDisableSubmit] = useState(true);
     const modalRef = useRef(null);
 
@@ -42,9 +42,9 @@ export const EditTechModal = () => {
             <ModalWrapper>
                 <ModalHeader>
                     <h4>Tecnologia Detalhes</h4>
-                    <CloseButton onClick={() => setEditModal()} />
+                    <CloseButton onClick={() => setEditModal(false)} />
                 </ModalHeader>
-                <form noValidate onSubmit={handleSubmit()}>
+                <form noValidate onSubmit={handleSubmit((data) => updateTechApi(data, modalInfo.id))}>
                     <Input type='text' placeholder={modalInfo.title} label='Nome' disabled={true} />
                     <Select
                         id='select-techs'
