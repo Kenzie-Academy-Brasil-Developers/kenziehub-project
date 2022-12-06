@@ -24,6 +24,11 @@ export const TechWrapper = styled.ul`
     margin-top: 21px;
     transition: all .3s;
 
+    & > p {
+        color: var(--color-grey-1);
+        text-align: center;
+    }
+
     @media (max-width: 240px) {
         padding: 5px;
         gap: 7px;
