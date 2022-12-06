@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { TechContext } from '../../contexts/techContext';
 import { Container } from '../../styles/Container';
@@ -25,8 +25,10 @@ export const Main = () => {
                 <AddButton onClick={() => setRegisModal(true)} />
             </TechHeader>
             <TechWrapper>
-                {techs.map(({ title, status, id }) =>
-                    <TechCard key={id} name={title} status={status} techId={id} onClick={handleModal} />)}
+                {techs.length ? techs.map(({ title, status, id }) =>
+                    <TechCard key={id} name={title} status={status} techId={id} onClick={handleModal} />)
+                : <p>Nenhuma tecnologia ainda foi cadastrada.</p>
+                }
             </TechWrapper>
         </Container>
     );

@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
 
     const handleLogout = () => {
         setUser({});
+        setTechs([]);
         localStorage.clear();
     };
 
