@@ -9,6 +9,7 @@ export const TechProvider = ({ children }) => {
     const [regisModal, setRegisModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [modalInfo, setModalInfo] = useState({});
 
     const createTechApi = async (data) => {
         try {
@@ -59,6 +60,8 @@ export const TechProvider = ({ children }) => {
             setEditModal,
             editModal,
             loading,
+            modalInfo,
+            setModalInfo,
         }}>
             {children}
         </TechContext.Provider>
