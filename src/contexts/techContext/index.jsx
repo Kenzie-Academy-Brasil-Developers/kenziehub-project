@@ -11,15 +11,29 @@ export const TechProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [modalInfo, setModalInfo] = useState({});
 
-    const createTechApi = async (data) => {
+
+    const refreshTechs = async () => {
+        try {
+            const { data } = await instance.get('/profile', {
+                headers: { Authorization: `Bearer ${localStorage.userToken}` },
+            });
+
+            setTechs(data.techs);
+
+        } catch (err) {
+            return err;
+        }
+    };
+
+    const createTechApi = async (formData) => {
         try {
             setLoading(true);
-            const response = await instance.post('/users/techs', data, {
+            const { data } = await instance.post('/users/techs', formData, {
                 headers: { Authorization: `Bearer ${localStorage.userToken}` },
             });
 
             toast.success('Tecnologia cadastrada!');
-            setTechs((old) => [...old, response.data]);
+            setTechs((old) => [...old, data]);
             setRegisModal(false);
 
         } catch (err) {
@@ -41,7 +55,7 @@ export const TechProvider = ({ children }) => {
             const updatedData = techs.filter(tech => tech.id !== techId);
             setTechs(updatedData);
             setEditModal(false);
-            
+
         } catch (err) {
             toast.error('Erro ao deletar a tecnologia! Tente novamente.');
             return err;
@@ -50,6 +64,7 @@ export const TechProvider = ({ children }) => {
         }
     };
 
+ 
     return (
         <TechContext.Provider value={{
             techs,
@@ -63,6 +78,7 @@ export const TechProvider = ({ children }) => {
             loading,
             modalInfo,
             setModalInfo,
+            updateTechApi,
         }}>
             {children}
         </TechContext.Provider>
