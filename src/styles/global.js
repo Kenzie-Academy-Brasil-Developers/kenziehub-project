@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
+        
         --color-primary: #FF577F;
         --color-primary-focus: #FF427F;
         --color-primary-negative: #59323F;
@@ -13,11 +14,13 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey-4: #121214;
 
         --color-white: #fff;
-
+        
         --color-overlay-grey-0: rgba(18, 18, 20, 0.5);
-
+        
         --color-success: #3FE864;
         --color-negative: #E83F5B;
+        
+        --toastify-color-success: var(--color-primary) !important;
 
         --font-family: 'Inter', sans-serif;
     }
