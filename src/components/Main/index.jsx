@@ -27,7 +27,7 @@ export const Main = () => {
             <TechWrapper>
                 {techs.length ? techs.map(({ title, status, id }) =>
                     <TechCard key={id} name={title} status={status} techId={id} onClick={handleModal} />)
-                : <p>Nenhuma tecnologia ainda foi cadastrada.</p>
+                : <p>Nenhuma tecnologia foi cadastrada.</p>
                 }
             </TechWrapper>
         </Container>
