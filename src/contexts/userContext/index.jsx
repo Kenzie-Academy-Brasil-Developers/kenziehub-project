@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(false);
+    const [loadWaitScreen, setLoadWaitScreen] = useState(true);
 
     const navigate = useNavigate();
 
@@ -63,6 +64,7 @@ export const UserProvider = ({ children }) => {
         const requestUserData = async () => {
             try {
                 if (localStorage.userToken) {
+                    setLoadWaitScreen(true);
                     navigate('/dashboard');
                     const { data } = await instance.get('/profile', {
                         headers: { Authorization: `Bearer ${localStorage.userToken}` },
@@ -70,6 +72,7 @@ export const UserProvider = ({ children }) => {
 
                     setUser(data);
                     setTechs(data.techs);
+                    setLoadWaitScreen(false);
                 }
 
             } catch (err) {
@@ -89,6 +92,8 @@ export const UserProvider = ({ children }) => {
             handleLogout,
             requestLoginApi,
             requestRegisterApi,
+            setLoadWaitScreen,
+            loadWaitScreen,
         }}>
             {children}
         </UserContext.Provider>
